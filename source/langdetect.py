@@ -5,6 +5,7 @@ import random
 from utils import *
 from classifiers import *
 from preprocess import  preprocess
+import time
 
 seed = 42
 random.seed(seed)
@@ -46,14 +47,26 @@ if __name__ == "__main__":
     
     # Preprocess text (Word granularity only)
     if args.analyzer == 'word':
+        st = time.time()
         X_train, y_train = preprocess(X_train,y_train)
         X_test, y_test = preprocess(X_test,y_test)
 
+        et = time.time()
+        elapsed_time = et - st
+        print('Preprocessing execution time:', round(elapsed_time * 1000000, 2), 'seconds')
+
+
     #Compute text features
+    st = time.time()
     features, X_train_raw, X_test_raw = compute_features(X_train, 
                                                             X_test, 
                                                             analyzer=args.analyzer, 
                                                             max_features=args.voc_size)
+
+    et = time.time()
+    elapsed_time = et - st
+    print('Text feature execution time:', round(elapsed_time*1000000, 2), 'seconds')
+
 
     print('========')
     print('Number of tokens in the vocabulary:', len(features))
