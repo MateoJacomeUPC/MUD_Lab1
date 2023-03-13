@@ -32,12 +32,12 @@ def compute_features(X_train,
   '''
   
   unigramVectorizer = CountVectorizer(analyzer=analyzer,
-                                      max_features=max_features,
-                                      ngram_range=(1,1))
+                                      max_features=max_features, #takes the most frequent tokens up to max_features
+                                      ngram_range=(1,1))         #into a list, and then counts how much times they appear
   
   X_unigram_train_raw = unigramVectorizer.fit_transform(X_train)
   X_unigram_test_raw = unigramVectorizer.transform(X_test)
-  unigramFeatures = unigramVectorizer.get_feature_names()
+  unigramFeatures = unigramVectorizer.get_feature_names_out()
   return unigramFeatures, X_unigram_train_raw, X_unigram_test_raw
     
 
