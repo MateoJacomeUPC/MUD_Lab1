@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 import random
 from utils import *
 from classifiers import *
-from preprocess import  preprocess
+from preprocess import *
 import time
 
 seed = 42
@@ -83,7 +83,7 @@ if __name__ == "__main__":
     print('Prediction Results:')    
     plot_F_Scores(y_test, y_predict)
     print('========')
-    
+
     plot_Confusion_Matrix(y_test, y_predict, "Greens") 
 
 
