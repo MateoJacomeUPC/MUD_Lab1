@@ -53,7 +53,7 @@ if __name__ == "__main__":
 
         et = time.time()
         elapsed_time = et - st
-        print('Preprocessing execution time:', round(elapsed_time * 1000000, 2), 'seconds')
+        print('Preprocessing execution time:', round(elapsed_time, 2), 'seconds')
 
 
     #Compute text features
@@ -65,12 +65,13 @@ if __name__ == "__main__":
 
     et = time.time()
     elapsed_time = et - st
-    print('Text feature execution time:', round(elapsed_time*1000000, 2), 'seconds')
+
 
 
     print('========')
     print('Number of tokens in the vocabulary:', len(features))
     print('Coverage: ', compute_coverage(features, X_test.values, analyzer=args.analyzer))
+    print('Text feature execution time:', round(elapsed_time, 2), 'seconds')
     print('========')
 
 
