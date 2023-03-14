@@ -83,5 +83,28 @@ def preprocess3(sentence, labels):
     return sentence,labels
 
 
+def preprocess4(sentence, labels):
+    '''
+    Task: Given a sentence apply all the required preprocessing steps
+    to compute train our classifier, such as sentence splitting,
+    tokenization or sentence splitting.
 
+    Input: Sentence in string format
+    Output: Preprocessed sentence either as a list or a string
+    '''
+
+    # iterating through all the texts
+    for i, text in sentence.iteritems():
+        # removing the symbols and numbers
+        # japanese
+        if re.search("[\u3040-\u30ff]", text):
+            text = ",".join(list(text))
+        # chinese
+        if re.search("[\u4e00-\u9FFF]", text):
+            text = ",".join(list(text))
+
+        # appending to data_list
+        sentence[i] = text
+
+    return sentence,labels
 

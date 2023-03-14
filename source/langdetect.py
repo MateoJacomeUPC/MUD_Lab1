@@ -7,8 +7,6 @@ from classifiers import *
 from preprocess import  preprocess
 import time
 
-
-
 seed = 42
 random.seed(seed)
 
@@ -49,8 +47,8 @@ if __name__ == "__main__":
     
     # Preprocess text (Word granularity only)
     if args.analyzer == 'word':
-        X_train, y_train = preprocess(X_train,y_train)
-        X_test, y_test = preprocess(X_test,y_test)
+        X_train, y_train = preprocess(X_train,y_train) #SUBSTITUTE with other preprocess functions before running, if needed
+        X_test, y_test = preprocess(X_test,y_test) #SUBSTITUTE with other preprocess functions before running, if needed
 
     #Compute text features
     features, X_train_raw, X_test_raw = compute_features(X_train, 
@@ -69,14 +67,14 @@ if __name__ == "__main__":
     X_train, X_test = normalizeData(X_train_raw, X_test_raw)
     y_predict = applyNaiveBayes(X_train, y_train, X_test)
     end = time.time()
-    
+
     print('========')
     print('Prediction Results:')    
     plot_F_Scores(y_test, y_predict)
     print('Execution time:')
     print(end - start)
     print('========')
-    
+
     plot_Confusion_Matrix(y_test, y_predict, "Greens") 
 
 
